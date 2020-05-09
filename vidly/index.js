@@ -2,7 +2,7 @@
 // 1. "npm init --yes" to install package.json.
 // 2. "npm i express" to install express.
 // 3. "npm i @hapi/joi" to install @hapi/joi.
-// 4. touch ".gitignore" the add "node_modules/" in file so node_modules are not added to Github
+// 4. touch ".gitignore" then add "node_modules/" in file so node_modules are not added to Github
 
 // Dependency Modules
 const Joi = require('@hapi/joi');
