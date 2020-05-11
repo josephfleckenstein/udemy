@@ -1,12 +1,21 @@
 // Dependency Modules (1. joi & 2. express)
 // since video was made in 2018 Joi has been deprecated.  @hapi/joi is its replacement.
 // joi.validate does not work w/ @hapi/joi
+const morgan = require('morgan');
+const helmet = require('helmet');
 const Joi = require('@hapi/joi');
+const logger = require('./logger');
 const express = require('express');
 const app = express();
 
 // middleware 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
+app.use(helmet());
+app.use(morgan('tiny'));
+
+app.use(logger);
 
 const courses = [
     { id: 1, name: 'course1' },
