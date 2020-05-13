@@ -8,25 +8,30 @@ getUser(1, (user) => {
     })
 });
 
-getUser(1)
-    .then(user => getRepositories(user.gitHubUsername))
-    .then(repos => getCommits(repos[0]))
-    .then(commits => console.log('Commits', commits))
-    .catch(err => console.log('Error', err.message));
+// Promise-based approach
+// getUser(1)
+//     .then(user => getRepositories(user.gitHubUsername))
+//     .then(repos => getCommits(repos[0]))
+//     .then(commits => console.log('Commits', commits))
+//     .catch(err => console.log('Error', err.message));
+
+// Async and Await approach -helps you write asynchronous code that looks and reads like synchronous code.  Still runs asynchronously.  They are built on top of promises.
+// When using Async and Await approach we use a "try catch" block to catch errors.
+// Meaning we are trying to execute these blocks and if anything goes wrong then the catch block is executed.
+async function displayCommits() {
+    try {
+        const user = await getUser(1);
+    const repos = await getRepositories(user.gitHubUsername);
+    const commits = await getCommits(repos[0]);
+    console.log(commits);
+    }
+    catch(err) {
+        console.log('Error, err.message')
+    }   
+}
+displayCommits()
 
 console.log('After');
-
-// function getRepositories(user) {
-//      getRepositories(user.gitHubUsername, getCommits);
-// }
-
-// function getCommits(repos) {
-//     getCommits(repo, displayCommits);
-// }
-
-// function displayCommits(commits) {
-//     console.log(commits);
-// }
 
 function getUser(id) {
     return new Promise((resolve, reject) => {
