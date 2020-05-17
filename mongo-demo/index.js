@@ -1,39 +1,42 @@
 // 1. npm init --yes to install package.json
 // 2. npm i mongoose to install mongoose.
+// 3. When want to connect to mongo database: 
+//  1. In terminal type "mongod" to start the mongo server.  Should say "waiting for connections of port 27017"
+//  2. Open robo3t on computer.  Connect to mongoserver.
 
 const Mongoose = require('mongoose');
 
 //connection string to mongodb database.  The connect method returns a promise.
-Mongoose.connect('mongodb+srv://joseph:kmtzs6mf@cluster0-k5los.mongodb.net/mongo-exercises?retryWrites=true&w=majority', {
+Mongoose.connect('mongodb://localhost/playground', {
     useNewUrlParser: true, useUnifiedTopology: true, })
     .then(() => { console.log('Connected to MongoDB...') })
     .catch(err => { console.error('Could not connect to MongoDB..., ${err}'); });
 
-// //Schema for course
-// // const courseSchema = new Mongoose.Schema({
-// //     name: String,
-// //     author: String, 
-// //     tags: [ String ],
-// //     date: { type: Date, default: Date.now },
-// //     isPublished: Boolean
-// // });
+// // Schema for course
+// const courseSchema = new Mongoose.Schema({
+//     name: String,
+//     author: String, 
+//     tags: [ String ],
+//     date: { type: Date, default: Date.now },
+//     isPublished: Boolean
+// });
 
-// // // // Then compile schema into a Model, which gives you a class.  Is "schmema less" meaning is not a schema.  A schema is not needed for no SQL databases such as Mongodb.
-// // // const Course = mongoose.model('Course', courseSchema) // Course is a class not an object, therefore use PascalCase, ie each word is capitalized.  'course' is for the collection of courses.
+// // // Then compile schema into a Model, which gives you a class.  Is "schmema less" meaning is not a schema.  A schema is not needed for no SQL databases such as Mongodb.
+// // const Course = mongoose.model('Course', courseSchema) // Course is a class not an object, therefore use PascalCase, ie each word is capitalized.  'course' is for the collection of courses.
 
-// // async function createCourse() {
-// //     const course = new Course({//creating an object based on the above class.  This object maps to a document in the mongodb database.
-// //         name: 'Angular Course',
-// //         author: 'Mosh',
-// //         tags: ['angular', 'front end'],
-// //         isPublished: true
-// //     }); // using camel case, ie lowercase c for first word, to name an object.
+// async function createCourse() {
+//     const course = new Course({//creating an object based on the above class.  This object maps to a document in the mongodb database.
+//         name: 'Angular Course',
+//         author: 'Mosh',
+//         tags: ['angular', 'front end'],
+//         isPublished: true
+//     }); // using camel case, ie lowercase c for first word, to name an object.
 
-// //     const result = await course.save();
-// //     console.log(result);
-// // }
+//     const result = await course.save();
+//     console.log(result);
+// }
 
-// // createCourse();
+// createCourse();
 
 // // // Comparison Operators example.
 // async function getCourses() {
